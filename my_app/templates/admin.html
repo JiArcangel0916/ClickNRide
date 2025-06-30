@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/admin.css">
+    <title>Click 'N Ride - Admin Dashboard</title>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Admin Dashboard Header -->
+        <div class="admin-card">
+            <h2>Admin Dashboard</h2>
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <h3>Total Users</h3>
+                    <p id="totalUsers"></p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Tickets</h3>
+                    <p id="activeTickets"></p>
+                </div>
+                <div class="stat-card">
+                    <h3>Today's Revenue</h3>
+                    <p id="dailyRevenue"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Management Section -->
+        <div class="admin-card">
+            <h3>User Management</h3>
+            <div class="search-bar form-group">
+                <input type="text" id="userSearch" placeholder="Search users..." onkeyup="searchUser()">
+            </div>
+            <table class="admin-table" id="userAdminTable">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Date Created</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="userList">
+                    <!-- User data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <!-- Ticket Monitoring Section -->
+        <div class="admin-card">
+            <h3>Ticket Monitoring</h3>
+            <div class="filters form-group">
+                <select id="ticketFilter" onchange="filterTicket()">
+                    <option value="all">All Tickets</option>
+                    <option value="active">Active Tickets</option>
+                    <option value="used">Used Tickets</option>
+                </select>
+            </div>
+            <div class="search-bar form-group">
+                <input type="text" id="ticketSearch" placeholder="Search ticket..." onkeyup="searchTicket()">
+            </div>
+            <table class="admin-table" id="ticketAdminTable">
+                <thead>
+                    <tr>
+                        <th>Ticket ID</th>
+                        <th>Destination</th>
+                        <th>Passengers</th>
+                        <th>Category</th>
+                        <th>Purchase Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="ticketList">
+                    <!-- Ticket data will be populated here -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Configuration Section -->
+        <!-- <div class="admin-card">
+            <h3>System Configuration</h3>
+            <div class="config-options">
+                <button onclick="openFareMatrixEditor()" class="button">Edit Fare Matrix</button>
+            </div>
+        </div> -->
+
+        <!-- QR Code Scanning Section -->
+        <!-- <div class="admin-card">
+            <h3>QR Code Scanning</h3>
+            <div class="scanner-controls">
+                <button id="connectScanner" class="button">Connect Scanner</button>
+                <button id="startScan" class="button" disabled>Start Scanning</button>
+                <div id="scannerStatus">Status: Disconnected</div>
+            </div>
+        
+            <div class="scan-results">
+                <div class="scan-detail">
+                    <label>Scanned Data:</label>
+                    <pre id="rawScanData"></pre>
+                </div>
+                <div class="validation-result" id="validationResult">
+                    <div class="result-icon"></div>
+                    <div class="result-text"></div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+    <button onclick="logout()" class="button" style="position: fixed; top: 20px; right: 20px;">Logout</button>
+    <script src="/static/admin.js"></script>
+</body>
+</html>

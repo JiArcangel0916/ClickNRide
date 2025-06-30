@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>Click 'N Ride - Login</title>
+    <link rel="stylesheet" href="/static/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div id="auth-screen" class="auth-screen">
+        <div class="auth-box" id="auth-box">
+            <div class="auth-forms">
+                <div class="login-container">
+                    <div class="form-header">
+                        <h2>Click 'N Ride</h2>
+                        <p>Welcome! Please log in to continue.</p>
+                    </div>
+                    <div class="auth-form">
+                        <input type="text" id="username" placeholder="Username" required>
+                        <input type="password" id="password" placeholder="Password" required>
+                        <button onclick="login()">Login</button>
+                    </div>
+                    <div class="toggle-form">
+                        <p>Don't have an account? <a onclick="toggleSignup()">Sign Up</a></p>
+                    </div>
+                </div>
+                <div class="signup-container">
+                    <div class="form-header">
+                        <h2>Create Account</h2>
+                        <p>Join us and book your ride easily!</p>
+                    </div>
+                    <div class="auth-form">
+                        <input type="text" id="new-username" placeholder="New Username" required>
+                        <input type="email" id="new-email" placeholder="Email" required>
+                        <input type="text" id="new-number" placeholder="Contact Number" required size="11" maxlength="11">
+                        <input type="password" id="new-password" placeholder="New Password" required>
+                        <button onclick="signup()">Create Account</button>
+                    </div>
+                    <div class="toggle-form">
+                        <p>Already have an account? <a onclick="toggleSignup()">Login</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="graphic-side">
+                <div class="graphic-content">
+                    <h2>Your Ride Awaits</h2>
+                    <p>Fast. Reliable. Safe. Book your transport with ease and confidence.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/login.js"></script>
+</body>
+</html>

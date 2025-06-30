@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/dashboard.css">
+    <title>Click 'N Ride - Digital Bus Ticketing</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Click 'N Ride</h1>
+            <p>Digital Bus Ticketing System</p>
+        </header>
+        <div class="nav-menu">
+            <button class="nav-button" onclick="showSection('buy-ticket')">Buy Ticket</button>
+            <button class="nav-button" onclick="showSection('my-tickets')">My Tickets</button>
+            <button class="nav-button" onclick="showSection('profile')">Profile</button>
+        </div>
+
+        <!-- Buy Ticket Section -->
+        <div id="buy-ticket" class="section active">
+            <h2>Buy Ticket</h2>           
+            <div class="form-group">                <!--DROP-OFF LOCATION-->                
+                <label for="drop-off-location">Drop-off Location:</label>
+                <select id="drop-off-location" onchange="updateSummary()">
+                    <option value="">Select drop-off location</option>
+                    <option value="SM Southmall">SM Southmall</option>
+                    <option value="Las Piñas Commercial Complex">Las Piñas Commercial Complex</option>
+                    <option value="Perpetual College/MedCenter">Perpetual College/MedCenter</option>
+                    <option value="Vista Mall Las Piñas">Vista Mall Las Piñas</option>
+                    <option value="Petron Gas Station">Petron Gas Station</option>
+                    <option value="Diego Cera Avenue corner">Diego Cera Avenue corner</option>
+                    <option value="CAVITEX corner">CAVITEX corner</option>
+                    <option value="CAVITEX">CAVITEX</option>
+                    <option value="PITX">PITX</option>
+                    <option value="Roxas Boulevard corner">Roxas Boulevard corner</option>
+                    <option value="EDSA corner">EDSA corner</option>
+                    <option value="Buendia Avenue corner">Buendia Avenue corner</option>
+                    <option value="La Verti Residence">La Verti Residence</option>
+                    <option value="De La Salle University Manila">De La Salle University Manila</option>
+                    <option value="Remedios Street corner">Remedios Street corner</option>
+                    <option value="Manila Science High School">Manila Science High School</option>
+                    <option value="Manila City Hall">Manila City Hall</option>
+                    <option value="Plaza Lawton">Plaza Lawton</option>
+                </select>
+            </div>
+           
+            <div class="form-group">                <!--NUMBER OF PASSENGERS-->
+                <label for="passengers">Number of Passengers:</label>
+                <input type="number" id="passengers" min="1" max="60" value="1" onchange="updateSummary()">
+            </div>
+           
+            <div class="form-group">                <!--CATEGORY-->
+                <label>Passenger Category:</label>
+                <div>
+                    <input type="radio" id="regular" name="category" value="Regular" onclick="updateSummary()" checked>
+                    <label for="Regular" style="display: inline;">Regular</label>
+                   
+                    <input type="radio" id="student" name="category" value="Student" onclick="updateSummary()">
+                    <label for="Student" style="display: inline;">Student</label>
+                   
+                    <input type="radio" id="senior" name="category" value="Senior Citizen" onclick="updateSummary()">
+                    <label for="Senior Citizen" style="display: inline;">Senior Citizen</label>
+                   
+                    <input type="radio" id="pwd" name="category" value="PWD" onclick="updateSummary()">
+                    <label for="PWD" style="display: inline;">PWD</label>
+                </div>
+            </div>
+           
+            <button class="sfmpbuttons" onclick="toggleFareMatrix()">Show Fare Matrix</button>
+           
+            <div id="fare-matrix" style="display: none;">
+                <h3>Fare Matrix</h3>
+                <table class="fare-matrix">
+                    <tr>
+                        <th>Destinations</th>
+                        <th>Fare</th>
+                    </tr>
+                    <tr>
+                        <td>SM Southmall</td>
+                        <td>₱15</td>
+                    </tr>
+                    <tr>
+                        <td>Las Pinas Commercial Complex</td>
+                        <td>₱17.75</td>
+                    </tr>
+                    <tr>
+                        <td>Perpetual College/MedCenter</td>
+                        <td>₱20.25</td>
+                    </tr>
+                    <tr>
+                        <td>Vista Mall Las Piñas</td>
+                        <td>₱23</td>
+                    </tr>
+                    <tr>
+                        <td>Petron Gas Station</td>
+                        <td>₱25</td>
+                    </tr>
+                    <tr>
+                        <td>Diego Cera Avenue corner</td>
+                        <td>₱28.25</td>
+                    </tr>
+                    <tr>
+                        <td>CAVITEX corner</td>
+                        <td>₱31</td>
+                    </tr>
+                    <tr>
+                        <td>CAVITEX</td>
+                        <td>₱33.50</td>
+                    </tr>
+                    <tr>
+                        <td>PITX</td>
+                        <td>₱52</td>
+                    </tr>
+                    <tr>
+                        <td>Roxas Boulevard corner</td>
+                        <td>₱54.75</td>
+                    </tr>
+                    <tr>
+                        <td>EDSA corner</td>
+                        <td>₱60</td>
+                    </tr>
+                    <tr>
+                        <td>Buendia Avenue corner</td>
+                        <td>₱65.25</td>
+                    </tr>
+                    <tr>
+                        <td>La Verti Residence</td>
+                        <td>₱68</td>
+                    </tr>
+                    <tr>
+                        <td>De La Salle University Manila</td>
+                        <td>₱70</td>
+                    </tr>
+                    <tr>
+                        <td>Remedios Street corner</td>
+                        <td>₱73</td>
+                    </tr>
+                    <tr>
+                        <td>Manila Science High School</td>
+                        <td>₱76</td>
+                    </tr>
+                    <tr>
+                        <td>Manila City Hall</td>
+                        <td>₱78</td>
+                    </tr>
+                    <tr>
+                        <td>Plaza Lawton</td>
+                        <td>₱81.25</td>
+                    </tr>
+                </table>
+                <p><strong>20% discount for Students, Senior Citizens, and PWD</strong></p>
+            </div>
+           
+            <button class="sfmpbuttons" onclick="proceedToSummary()" style="margin-top: 20px;">Proceed</button>
+           
+            <div id="ticket-summary" style="display: none;">
+                <h3>Ticket Summary</h3>
+                <div class="ticket-summary">
+                    <div class="ticket-item"><strong>Drop-off:</strong> <span id="summary-dropoff"></span></div>
+                    <div class="ticket-item"><strong>Passengers:</strong> <span id="summary-passengers"></span></div>
+                    <div class="ticket-item"><strong>Category:</strong> <span id="summary-category"></span></div>
+                    <div class="ticket-item"><strong>Fare:</strong> <span id="summary-fare"></span></div>
+                    <div class="ticket-item"><strong>Discount:</strong> <span id="summary-discount"></span></div>
+                    <div class="ticket-item"><strong>Total Amount:</strong> <span id="summary-total"></span></div>
+                </div>
+               
+                <div class="payment-methods">
+                    <h4>Select Payment Method</h4>
+                    <label class="payment-option" onclick="selectPayment('credit-card')">
+                        <input type="radio" name="payment" value="credit-card" checked> Credit Card
+                    </label>
+                    <label class="payment-option" onclick="selectPayment('debit-card')">
+                        <input type="radio" name="payment" value="debit-card"> Debit Card
+                    </label>
+                    <label class="payment-option" onclick="selectPayment('paypal')">
+                        <input type="radio" name="payment" value="paypal"> PayPal
+                    </label>
+                    <label class="payment-option" onclick="selectPayment('mobile-wallet')">
+                        <input type="radio" name="payment" value="mobile-wallet"> Mobile Wallet
+                    </label>
+                </div>
+               
+                <button class="sfmpbuttons" onclick="processPayment()">Confirm Payment</button>
+            </div>
+           
+            <div id="payment-success" style="display: none; text-align: center;">
+                <h3>Payment Successful!</h3>
+                <p style="margin: 10px auto">Your ticket has been purchased. (Save a screenshot for future purposes)</p>
+                <div class="qr-code">
+                    <p id="ticket-title">Your QR Code Ticket:</p>
+                    <img id="ticket-qr" src="" alt="QR Code">
+                    <p id="ticket-id"></p>
+                </div>
+                <button class="vbutton" onclick="showSection('my-tickets')">View My Tickets</button>
+            </div>
+        </div>
+
+
+
+        <!-- My Tickets Section -->
+        <div id="my-tickets" class="section">
+            <h2>My Tickets</h2>
+            <div id="active-tickets">
+                <h3>Active Tickets</h3>
+                <div id="active-tickets-list"></div>
+            </div>
+            <div id="closed-tickets">
+                <h3>Closed Tickets</h3>
+                <div id="closed-tickets-list"></div>
+            </div>
+        </div>
+
+
+
+        <!-- Profile Section -->
+        <div id="profile" class="section">
+            <h2>Profile Settings</h2>
+            <div class="profile-info">
+                <div class="profile-field">
+                    <label>Username:</label>
+                    <span id="profile-username"></span>
+                </div>
+                <div class="profile-field">
+                    <label>Email:</label>
+                    <span id="profile-email"></span>
+                </div>
+                <div class="profile-field">
+                    <label>Mobile Number:</label>
+                    <span id="profile-contactNo"></span>
+                </div>
+            </div>
+           
+            <div id="change-password">
+                <h3>Change Password</h3>
+                <div class="form-group">
+                    <label for="current-password">Current Password:</label>
+                    <input type="password" id="current-password">
+                </div>
+                <div class="form-group">
+                    <label for="new-password">New Password:</label>
+                    <input type="password" id="new-password">
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm New Password:</label>
+                    <input type="password" id="confirm-password">
+                </div>
+                <button class="sfmpbuttons" onclick="changePassword()">Change Password</button>
+                <p id="password-message"></p>
+            </div>
+           
+            <button class="sfmpbuttons" onclick="logout()" style="margin-top: 30px;">Logout</button><br>
+            <button class="sfmpbuttons" id="deleteAccountBtn" onclick="deleteAccount()">Delete Account</button>
+        </div>
+
+
+
+        <!-- Help Button -->
+        <div class="help-button" onclick="toggleHelp()">?</div>
+        <div class="help-popup" id="help-popup">
+            <span class="close-help" onclick="toggleHelp()">×</span>
+            <h3>Need Help?</h3>
+            <p>For assistance with tickets or any issues, please contact:</p>
+            <p><strong>Email:</strong> support@clicknride.com</p>
+            <p>Our support team is available 24/7.</p>
+        </div>
+    </div>
+    <script src="/static/main.js" defer></script>
+</body>
+</html>
